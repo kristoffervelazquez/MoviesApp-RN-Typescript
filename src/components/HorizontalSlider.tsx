@@ -24,7 +24,7 @@ const HorizontalSlider = ({ data, title, renderItem }: Props) => {
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id.toString()}
                 horizontal={true}
-            // showsHorizontalScrollIndicator={true}
+                showsHorizontalScrollIndicator={false}
 
             />
         </View>

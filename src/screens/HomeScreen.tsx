@@ -1,10 +1,9 @@
 import React from 'react'
-import { View, Text, ActivityIndicator, Dimensions, FlatList, ScrollView } from 'react-native'
+import { View, Text, ActivityIndicator, Dimensions, ScrollView } from 'react-native'
 import { useMovies } from '../hooks/useMovies';
 import MoviePoster from '../components/MoviePoster';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Carousel from 'react-native-reanimated-carousel';
-import { Movie } from '../interfaces/movieInterface';
 import HorizontalSlider from '../components/HorizontalSlider';
 
 
