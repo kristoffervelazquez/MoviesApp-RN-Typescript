@@ -3,6 +3,8 @@ import React from 'react'
 import { StackScreenProps } from '@react-navigation/stack'
 // import { Movie } from '../interfaces/movieInterface';
 import { RootStackParams } from '../navigation/Navigation';
+import Icon from 'react-native-vector-icons/Ionicons'
+import { useMovieDetails } from '../hooks/useMovieDetail';
 
 
 interface Props extends StackScreenProps<RootStackParams, 'DetailScreen'> { };
@@ -15,18 +17,24 @@ const DetailScreen = ({ route }: Props) => {
 
     const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
+    const { isLoading, cast, movieFullDetails } = useMovieDetails(movie.id)
+
+    console.log(cast);
+
+
+
 
     return (
         <ScrollView>
             <View style={styles.imageContainer}>
                 <View style={styles.imageBorder}>
-
                     <Image source={{ uri }} style={styles.posterImage} />
                 </View>
             </View>
             <View style={styles.marginContainer}>
                 <Text style={styles.subTitle}>{movie.original_title}</Text>
                 <Text style={styles.title}>{movie.title}</Text>
+                <Icon name='star-outline' size={20} color='gray' />
             </View>
 
         </ScrollView>
@@ -71,6 +79,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: 'black'
+        color: 'black',
+        marginBottom: 10,
     },
 })
