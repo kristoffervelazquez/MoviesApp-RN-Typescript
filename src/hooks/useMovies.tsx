@@ -13,13 +13,12 @@ export const useMovies = () => {
         const resp = await movieDB.get<MoiveDBNowPlaying>('/now_playing')
 
         setMoviesCine(resp.data.results)
+        setisLoading(false)
+
     }
     useEffect(() => {
         //nowPlaying
         getMovies();
-
-        setisLoading(false)
-
     }, [])
 
 
