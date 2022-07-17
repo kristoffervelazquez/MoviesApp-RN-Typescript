@@ -1,5 +1,5 @@
 
-export interface MoiveDBNowPlaying {
+export interface MoviesResponse {
     dates:         Dates;
     page:          number;
     results:       Movie[];

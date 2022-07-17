@@ -14,7 +14,7 @@ const HomeScreen = () => {
 
 
     const { top } = useSafeAreaInsets()
-    const { moviesCine, isLoading } = useMovies()
+    const { isLoading, nowPlaying, popular, topRated, upcoming } = useMovies()
 
 
     // console.log(moviesCine[1]?.title);
@@ -47,7 +47,7 @@ const HomeScreen = () => {
                         // the snap helps to stop exactly in 1 item, no in the middle of two or so
                         snapEnabled
 
-                        
+
 
                         // This props are for the item in the middle
                         width={300}
@@ -62,19 +62,31 @@ const HomeScreen = () => {
                             parallaxAdjacentItemScale: 0.75,
                         }}
 
-                        data={moviesCine}
+                        data={nowPlaying}
                         renderItem={({ item }) => <MoviePoster movie={item} />}
                     />
                 </View>
                 <HorizontalSlider
-                    data={moviesCine}
+                    data={nowPlaying}
                     renderItem={({ item }) => <MoviePoster movie={item} height={200} width={140} />}
                     title='En cine'
                 />
                 <HorizontalSlider
-                    data={moviesCine}
+                    data={popular}
                     renderItem={({ item }) => <MoviePoster movie={item} height={200} width={140} />}
+                    title='Populares'
                 />
+                <HorizontalSlider
+                    data={topRated}
+                    renderItem={({ item }) => <MoviePoster movie={item} height={200} width={140} />}
+                    title='Mejor valoradas'
+                />
+                <HorizontalSlider
+                    data={upcoming}
+                    renderItem={({ item }) => <MoviePoster movie={item} height={200} width={140} />}
+                    title='Proximamente...'
+                />
+
             </View>
         </ScrollView>
     )
