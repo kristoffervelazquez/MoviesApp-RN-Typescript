@@ -14,7 +14,7 @@ interface Props {
 
 const HorizontalSlider = ({ data, title, renderItem }: Props) => {
     return (
-        <View style={{ backgroundColor: 'white', height: (title ? 260 : 220) }}>
+        <View style={{ height: (title ? 260 : 220) }}>
             {
                 title &&
                 <Text style={{ fontSize: 30, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{title}</Text>
