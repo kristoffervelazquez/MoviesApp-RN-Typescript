@@ -1,10 +1,10 @@
 import React from 'react'
 import { View, Text, ActivityIndicator, Dimensions, ScrollView } from 'react-native'
-import { useMovies } from '../hooks/useMovies';
-import MoviePoster from '../components/MoviePoster';
+import { useMovies } from '../../hooks/useMovies';
+import MoviePoster from '../../components/MoviePoster';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Carousel from 'react-native-reanimated-carousel';
-import HorizontalSlider from '../components/HorizontalSlider';
+import HorizontalSlider from '../../components/HorizontalSlider';
 
 
 const { width: windowWidth } = Dimensions.get('window')

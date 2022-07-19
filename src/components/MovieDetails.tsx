@@ -2,10 +2,10 @@ import { View, Text, FlatList } from 'react-native'
 import React from 'react'
 import 'intl';
 import 'intl/locale-data/jsonp/en';
-import { MovieFull } from '../interfaces/movieDetailsInterface';
-import { Cast } from '../interfaces/creditsInterface';
+import { Cast } from '../interfaces/MoviesInterfaces/creditsInterface';
 import Icon from 'react-native-vector-icons/Ionicons'
 import CastCardItem from './CastCardItem';
+import { MovieFull } from '../interfaces/MoviesInterfaces/movieDetailsInterface';
 
 
 

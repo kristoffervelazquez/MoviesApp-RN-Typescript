@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, Text, ScrollView, Image, StyleSheet, Dimensions, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack'
-import { RootStackParams } from '../navigation/Navigation';
-import { useMovieDetails } from '../hooks/useMovieDetail';
-import MovieDetails from '../components/MovieDetails';
+import { RootStackParams } from '../../navigation/Navigation';
+import { useMovieDetails } from '../../hooks/useMovieDetail';
+import MovieDetails from '../../components/MovieDetails';
 import Icon from 'react-native-vector-icons/Ionicons'
 
 

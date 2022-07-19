@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { Cast } from '../interfaces/creditsInterface';
+import { Cast } from '../interfaces/MoviesInterfaces/creditsInterface';
 
 interface Props {
     actor: Cast

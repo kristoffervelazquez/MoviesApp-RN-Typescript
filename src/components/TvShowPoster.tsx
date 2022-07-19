@@ -1,24 +1,24 @@
 import { View, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { Movie } from '../interfaces/MoviesInterfaces/movieInterface';
 import { useNavigation } from '@react-navigation/native';
+import { TvShow } from '../interfaces/TvShowsInterfaces/TvShowInterface';
 
 interface Props {
-    movie: Movie;
+    show: TvShow;
     height?: number
     width?: number
 
 }
 
 
-const MoviePoster = ({ movie, height = 420, width = 300 }: Props) => {
+const TvShowPoster = ({ show, height = 420, width = 300 }: Props) => {
 
     const navigation = useNavigation();
 
-    const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+    const uri = `https://image.tmdb.org/t/p/w500${show.poster_path}`;
     return (
 
-        <TouchableOpacity activeOpacity={0.6} onPress={() => { navigation.navigate('DetailScreen' as never, movie as never) }}>
+        <TouchableOpacity activeOpacity={0.6} onPress={() => { navigation.navigate('TvDetailScreen' as never, show as never) }}>
             <View style={{
                 width,
                 height,
@@ -56,5 +56,5 @@ const styles = StyleSheet.create({
     }
 })
 
-export default MoviePoster
+export default TvShowPoster
 

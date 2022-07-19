@@ -1,7 +1,7 @@
-import { MovieFull } from '../interfaces/movieDetailsInterface';
+import { MovieFull } from '../interfaces/MoviesInterfaces/movieDetailsInterface';
 import { useEffect, useState } from 'react';
 import movieDB from '../api/movieDB';
-import { CreditsResponse, Cast } from '../interfaces/creditsInterface';
+import { CreditsResponse, Cast } from '../interfaces/MoviesInterfaces/creditsInterface';
 
 
 interface MovieDetailsProps {
