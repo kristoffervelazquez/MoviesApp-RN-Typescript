@@ -17,8 +17,8 @@ interface Props {
 const TvShowPoster = ({ show, height = 420, width = 300 }: Props) => {
 
     const navigation = useNavigation();
+    
     const pushAction = StackActions.push('TvDetailScreen' as never, show as never);
-
     const uri = `https://image.tmdb.org/t/p/w500${show.poster_path}`;
     return (
 
