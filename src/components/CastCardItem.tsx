@@ -1,11 +1,12 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Cast } from '../interfaces/MoviesInterfaces/creditsInterface';
+import { CastTV } from '../interfaces/TvShowsInterfaces/tvShowCreditsInterface';
 
 interface Props {
-    actor: Cast
+    actor: Actor
 }
-
+type Actor = Cast | CastTV
 
 const CastCardItem = ({ actor }: Props) => {
     const uri = `https://image.tmdb.org/t/p/w500/${actor.profile_path}`

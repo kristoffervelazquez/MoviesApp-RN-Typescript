@@ -9,10 +9,8 @@ const BottomTabNavigation = () => {
 
     const BottomTab = createMaterialBottomTabNavigator();
 
-
-
     return (
-        <BottomTab.Navigator barStyle={{ backgroundColor: '#444444' }}>
+        <BottomTab.Navigator barStyle={{ backgroundColor: '#170F5F' }}>
             <BottomTab.Screen name="MoviesNavigator" options={{ tabBarLabel: 'Movies', }} component={HomeScreen} />
             <BottomTab.Screen name="ShowsNavigator" options={{ tabBarLabel: 'Shows' }} component={TvHomeScreen} />
             <BottomTab.Screen name="SettingsScreen" options={{ tabBarLabel: 'Settings' }} component={SettingsScreen} />

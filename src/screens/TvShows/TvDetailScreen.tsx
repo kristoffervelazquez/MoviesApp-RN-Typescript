@@ -2,23 +2,24 @@ import React from 'react'
 import { View, Text, ScrollView, Image, StyleSheet, Dimensions, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack'
 import { RootStackParams } from '../../navigation/Navigation';
-import { useMovieDetails } from '../../hooks/useMovieDetail';
-import MovieDetails from '../../components/MovieDetails';
 import Icon from 'react-native-vector-icons/Ionicons'
+import useTvShowDetails from '../../hooks/useTvShowDetails';
+import TvShowDetails from '../../components/TvShowDetailsComponent';
+import HorizontalSlider from '../../components/HorizontalSlider';
+import TvShowPoster from '../../components/TvShowPoster';
 
 
-interface Props extends StackScreenProps<RootStackParams, 'DetailScreen'> { };
+interface Props extends StackScreenProps<RootStackParams, 'TvDetailScreen'> { };
 
 const screenHeight = Dimensions.get('window').height
 
 const TvDetailScreen = ({ route, navigation }: Props) => {
 
-    const movie = route.params
+    const show = route.params
 
-    const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+    const uri = `https://image.tmdb.org/t/p/w500${show.poster_path}`;
 
-    const { isLoading, cast, movieFullDetails } = useMovieDetails(movie.id)
-
+    const { cast, isLoading, tvShowDetails, similarShows } = useTvShowDetails(show.id)
 
     return (
         <ScrollView>
@@ -28,8 +29,8 @@ const TvDetailScreen = ({ route, navigation }: Props) => {
                 </View>
             </View>
             <View style={styles.marginContainer}>
-                <Text style={styles.subTitle}>{movie.original_title}</Text>
-                <Text style={styles.title}>{movie.title}</Text>
+                <Text style={styles.subTitle}>{show.original_name}</Text>
+                <Text style={styles.title}>{show.name}</Text>
                 {/* <Icon name='star-outline' size={20} color='gray' /> */}
             </View>
 
@@ -37,13 +38,18 @@ const TvDetailScreen = ({ route, navigation }: Props) => {
                 isLoading ?
                     <ActivityIndicator color={'grey'} style={{ marginTop: 20 }} />
                     :
-                    <MovieDetails movie={movieFullDetails!} cast={cast} />
+                    <TvShowDetails show={tvShowDetails!} cast={cast} />
             }
             {/* Boton para regresar */}
-            <TouchableOpacity style={styles.backButtonContainer} onPress={() => {navigation.pop()}}>
+            <TouchableOpacity style={styles.backButtonContainer} onPress={() => { navigation.pop() }}>
                 <Icon name='arrow-back-outline' color="black" size={25} style={styles.backButton} />
             </TouchableOpacity>
 
+            <HorizontalSlider
+                data={similarShows}
+                renderItem={({ item }) => <TvShowPoster show={item} height={200} width={140} />}
+                title='Similares a este...'
+            />
         </ScrollView>
     )
 }

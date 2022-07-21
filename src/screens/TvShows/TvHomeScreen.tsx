@@ -13,13 +13,9 @@ const TvHomeScreen = () => {
 
 
     const { top } = useSafeAreaInsets()
-    // const { isLoading, nowPlaying, popular, topRated, upcoming } = useMovies()
 
-    const { isLoading, popular, onTheAir } = useTvShows()
+    const { isLoading, popular, onTheAir, onAirToday, topRated } = useTvShows()
 
-
-    console.log(isLoading);
-    // console.log(moviesCine[1]?.title);
 
     if (isLoading) {
         return (
@@ -71,14 +67,21 @@ const TvHomeScreen = () => {
                 <HorizontalSlider
                     data={onTheAir}
                     renderItem={({ item }) => <TvShowPoster show={item} height={200} width={140} />}
-                    title='On air'
-                />
-                {/* <HorizontalSlider
-                    data={popular}
-                    renderItem={({ item }) => <MoviePoster movie={item} height={200} width={140} />}
-                    title='Populares'
+                    title='Al aire'
                 />
                 <HorizontalSlider
+                    data={topRated}
+                    renderItem={({ item }) => <TvShowPoster show={item} height={200} width={140} />}
+                    title='Mejor Calificados'
+                />
+                <HorizontalSlider
+                    data={onAirToday}
+                    renderItem={({ item }) => <TvShowPoster show={item} height={200} width={140} />}
+                    title='En Vivo Hoy!'
+                />
+
+
+                {/* <HorizontalSlider
                     data={topRated}
                     renderItem={({ item }) => <MoviePoster movie={item} height={200} width={140} />}
                     title='Mejor valoradas'

@@ -1,16 +1,18 @@
-import { View, Text, FlatList } from 'react-native'
 import React from 'react'
-import { Movie } from '../interfaces/movieInterface';
-import MoviePoster from './MoviePoster';
+import { View, Text, FlatList } from 'react-native'
+import { Movie } from '../interfaces/MoviesInterfaces/movieInterface';
+import { TvShow } from '../interfaces/TvShowsInterfaces/TvShowInterface';
+import { TvSimilarShows } from '../interfaces/TvShowsInterfaces/tvShowSimilarInterface';
 
 
 interface Props {
     title?: string;
-    data: Movie[];
+    data: Data[];
     renderItem: ({ item }: any) => JSX.Element
 
 }
 
+type Data = TvShow | Movie | TvSimilarShows
 
 const HorizontalSlider = ({ data, title, renderItem }: Props) => {
     return (
