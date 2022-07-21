@@ -19,7 +19,7 @@ const TvDetailScreen = ({ route, navigation }: Props) => {
 
     const uri = `https://image.tmdb.org/t/p/w500${show.poster_path}`;
 
-    const { cast, isLoading, tvShowDetails, similarShows } = useTvShowDetails(show.id)
+    const { cast, isLoading, tvShowDetails, similarShows } = useTvShowDetails({ id: show.id })
 
     return (
         <ScrollView>
@@ -41,15 +41,17 @@ const TvDetailScreen = ({ route, navigation }: Props) => {
                     <TvShowDetails show={tvShowDetails!} cast={cast} />
             }
             {/* Boton para regresar */}
+            <View style={{ marginBottom: 30 }}>
+                <HorizontalSlider
+                    data={similarShows}
+                    renderItem={({ item }) => <TvShowPoster show={item} height={200} width={140} />}
+                    title='Similares a este...'
+                />
+
+            </View>
             <TouchableOpacity style={styles.backButtonContainer} onPress={() => { navigation.pop() }}>
                 <Icon name='arrow-back-outline' color="black" size={25} style={styles.backButton} />
             </TouchableOpacity>
-
-            <HorizontalSlider
-                data={similarShows}
-                renderItem={({ item }) => <TvShowPoster show={item} height={200} width={140} />}
-                title='Similares a este...'
-            />
         </ScrollView>
     )
 }

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { TvShowDetails } from '../interfaces/TvShowsInterfaces/tvShowDetailsInterface';
 import { CastTV, CreditsResponseTV } from '../interfaces/TvShowsInterfaces/tvShowCreditsInterface';
 import { TvSimilarShows, TvSimilarShowsResponse } from '../interfaces/TvShowsInterfaces/tvShowSimilarInterface';
+import { Lenguajes } from '../api/movieDB';
 
 
 
@@ -14,7 +15,13 @@ interface TvShowDetailsState {
     similarShows: TvSimilarShows[]
 }
 
-const useTvShowDetails = (id: number) => {
+
+interface Props {
+    id: number,
+    idioma?: Lenguajes
+}
+
+const useTvShowDetails = ({ id, idioma = 'en-EN' }: Props) => {
 
 
     const [state, setState] = useState<TvShowDetailsState>({
@@ -25,9 +32,9 @@ const useTvShowDetails = (id: number) => {
     });
 
     const getDetails = async () => {
-        const showDetails = showDB.get<TvShowDetails>(`/${id}`)
-        const cast = showDB.get<CreditsResponseTV>(`/${id}/credits`)
-        const similarTvShows = await showDB.get<TvSimilarShowsResponse>(`/${id}/similar`)
+        const showDetails = showDB(idioma).get<TvShowDetails>(`/${id}`)
+        const cast = showDB(idioma).get<CreditsResponseTV>(`/${id}/credits`)
+        const similarTvShows = await showDB(idioma).get<TvSimilarShowsResponse>(`/${id}/similar`)
 
         const response = await Promise.all([showDetails, cast, similarTvShows]);
 

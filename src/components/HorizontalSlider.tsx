@@ -3,6 +3,7 @@ import { View, Text, FlatList } from 'react-native'
 import { Movie } from '../interfaces/MoviesInterfaces/movieInterface';
 import { TvShow } from '../interfaces/TvShowsInterfaces/TvShowInterface';
 import { TvSimilarShows } from '../interfaces/TvShowsInterfaces/tvShowSimilarInterface';
+import { SimilarMovies } from '../interfaces/MoviesInterfaces/moviesSimilarInterface';
 
 
 interface Props {
@@ -12,7 +13,7 @@ interface Props {
 
 }
 
-type Data = TvShow | Movie | TvSimilarShows
+type Data = TvShow | Movie | TvSimilarShows | SimilarMovies
 
 const HorizontalSlider = ({ data, title, renderItem }: Props) => {
     return (

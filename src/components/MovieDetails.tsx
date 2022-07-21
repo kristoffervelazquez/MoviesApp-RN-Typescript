@@ -42,7 +42,7 @@ const MovieDetails = ({ cast, movie }: Props) => {
                 </View>
 
             </View>
-            <View style={{ marginBottom: 100, }}>
+            <View style={{ marginBottom: 30 }}>
                 <Text style={{ marginLeft: 20, fontSize: 24, marginTop: 10, fontWeight: 'bold', color: 'black' }}>Actores</Text>
 
                 <FlatList
@@ -53,6 +53,7 @@ const MovieDetails = ({ cast, movie }: Props) => {
                     showsHorizontalScrollIndicator={false}
                     style={{ marginTop: 10, height: 70 }}
                 />
+                
             </View>
 
         </>

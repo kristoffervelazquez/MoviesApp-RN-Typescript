@@ -5,6 +5,8 @@ import { RootStackParams } from '../../navigation/Navigation';
 import { useMovieDetails } from '../../hooks/useMovieDetail';
 import MovieDetails from '../../components/MovieDetails';
 import Icon from 'react-native-vector-icons/Ionicons'
+import HorizontalSlider from '../../components/HorizontalSlider';
+import MoviePoster from '../../components/MoviePoster';
 
 
 interface Props extends StackScreenProps<RootStackParams, 'DetailScreen'> { };
@@ -17,9 +19,9 @@ const DetailScreen = ({ route, navigation }: Props) => {
 
     const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
-    const { isLoading, cast, movieFullDetails } = useMovieDetails(movie.id)
+    const { isLoading, cast, movieFullDetails, similar } = useMovieDetails({id: movie.id})
 
-    console.log(movie.id);
+
 
 
     return (
@@ -40,9 +42,16 @@ const DetailScreen = ({ route, navigation }: Props) => {
                     <ActivityIndicator color={'grey'} style={{ marginTop: 20 }} />
                     :
                     <MovieDetails movie={movieFullDetails!} cast={cast} />
+
             }
+
+            <HorizontalSlider
+                data={similar}
+                renderItem={({ item }) => <MoviePoster movie={item} height={200} width={140} />}
+                title='Similares a este...'
+            />
             {/* Boton para regresar */}
-            <TouchableOpacity style={styles.backButtonContainer} onPress={() => {navigation.pop()}}>
+            <TouchableOpacity style={styles.backButtonContainer} onPress={() => { navigation.pop() }}>
                 <Icon name='arrow-back-outline' color="black" size={25} style={styles.backButton} />
             </TouchableOpacity>
 

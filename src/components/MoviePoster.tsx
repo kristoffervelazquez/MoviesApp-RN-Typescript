@@ -2,23 +2,24 @@ import { View, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Movie } from '../interfaces/MoviesInterfaces/movieInterface';
 import { useNavigation } from '@react-navigation/native';
+import { StackActions } from '@react-navigation/native';
+
 
 interface Props {
     movie: Movie;
     height?: number
     width?: number
-
 }
-
 
 const MoviePoster = ({ movie, height = 420, width = 300 }: Props) => {
 
     const navigation = useNavigation();
+    const pushAction = StackActions.push('DetailScreen' as never, movie as never)
 
     const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     return (
 
-        <TouchableOpacity activeOpacity={0.6} onPress={() => { navigation.navigate('DetailScreen' as never, movie as never) }}>
+        <TouchableOpacity activeOpacity={0.6} onPress={() => { navigation.dispatch(pushAction) }}>
             <View style={{
                 width,
                 height,

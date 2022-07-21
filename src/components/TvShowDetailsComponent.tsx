@@ -35,12 +35,9 @@ const TvShowDetailsComponent = ({ cast, show }: Props) => {
                     <Text style={{ fontSize: 20, marginTop: 10, fontWeight: 'bold', color: 'black' }}>Historia</Text>
                     <Text style={{ fontSize: 16 }}>{show.overview}</Text>
                 </View>
-                <View>
-                    <Text style={{ fontSize: 20, marginTop: 10, fontWeight: 'bold', color: 'black' }}>Presupuesto</Text>
-                </View>
 
             </View>
-            <View style={{ marginBottom: 100, }}>
+            <View style={{ marginBottom: 30, }}>
                 <Text style={{ marginLeft: 20, fontSize: 24, marginTop: 10, fontWeight: 'bold', color: 'black' }}>Actores</Text>
 
                 <FlatList
