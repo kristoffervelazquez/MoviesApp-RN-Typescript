@@ -2,6 +2,9 @@ import { View, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { TvShow } from '../interfaces/TvShowsInterfaces/TvShowInterface';
+import { StackActions } from '@react-navigation/native';
+
+
 
 interface Props {
     show: TvShow;
@@ -14,11 +17,12 @@ interface Props {
 const TvShowPoster = ({ show, height = 420, width = 300 }: Props) => {
 
     const navigation = useNavigation();
+    const pushAction = StackActions.push('TvDetailScreen' as never, show as never);
 
     const uri = `https://image.tmdb.org/t/p/w500${show.poster_path}`;
     return (
 
-        <TouchableOpacity activeOpacity={0.6} onPress={() => { navigation.navigate('TvDetailScreen' as never, show as never) }}>
+        <TouchableOpacity activeOpacity={0.6} onPress={() => { navigation.dispatch(pushAction) }}>
             <View style={{
                 width,
                 height,
