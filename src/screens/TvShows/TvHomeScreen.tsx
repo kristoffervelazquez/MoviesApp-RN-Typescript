@@ -1,20 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, Text, ActivityIndicator, Dimensions, ScrollView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Carousel from 'react-native-reanimated-carousel';
 import HorizontalSlider from '../../components/HorizontalSlider';
 import useTvShows from '../../hooks/useTvShows';
 import TvShowPoster from '../../components/TvShowPoster';
+import { languageContext } from '../../context/LanguageContext';
 
 
 const { width: windowWidth } = Dimensions.get('window')
 
 const TvHomeScreen = () => {
-
+    const {idioma} = useContext(languageContext)
 
     const { top } = useSafeAreaInsets()
 
-    const { isLoading, popular, onTheAir, onAirToday, topRated } = useTvShows()
+    const { isLoading, popular, onTheAir, onAirToday, topRated } = useTvShows(idioma)
 
 
     if (isLoading) {

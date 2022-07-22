@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, Text, ScrollView, Image, StyleSheet, Dimensions, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack'
 import { RootStackParams } from '../../navigation/Navigation';
@@ -7,6 +7,7 @@ import useTvShowDetails from '../../hooks/useTvShowDetails';
 import TvShowDetails from '../../components/TvShowDetailsComponent';
 import HorizontalSlider from '../../components/HorizontalSlider';
 import TvShowPoster from '../../components/TvShowPoster';
+import { languageContext } from '../../context/LanguageContext';
 
 
 interface Props extends StackScreenProps<RootStackParams, 'TvDetailScreen'> { };
@@ -15,11 +16,13 @@ const screenHeight = Dimensions.get('window').height
 
 const TvDetailScreen = ({ route, navigation }: Props) => {
 
+    const {idioma} = useContext(languageContext)
+
     const show = route.params
 
     const uri = `https://image.tmdb.org/t/p/w500${show.poster_path}`;
 
-    const { cast, isLoading, tvShowDetails, similarShows } = useTvShowDetails({ id: show.id })
+    const { cast, isLoading, tvShowDetails, similarShows } = useTvShowDetails({ id: show.id, idioma })
 
     return (
         <ScrollView>

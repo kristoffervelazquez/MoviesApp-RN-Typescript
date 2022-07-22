@@ -15,10 +15,10 @@ interface MovieDetailsProps {
 
 interface Props {
     id: number,
-    lenguaje?: Lenguajes
+    lenguaje: Lenguajes
 }
 
-export const useMovieDetails = ({ id, lenguaje = 'en-EN' }: Props) => {
+export const useMovieDetails = ({ id, lenguaje }: Props) => {
 
     const [movieDetailsState, setmovieDetailsState] = useState<MovieDetailsProps>({
         isLoading: true,
@@ -51,7 +51,7 @@ export const useMovieDetails = ({ id, lenguaje = 'en-EN' }: Props) => {
 
     useEffect(() => {
         getDetails();
-    }, [id])
+    }, [id, lenguaje])
 
 
     return {

@@ -1,9 +1,15 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import { RadioButton } from 'react-native-paper'
+import { languageContext } from '../context/LanguageContext'
+
 
 
 const SettingsScreen = () => {
+
+
+    const { changeLang, idioma } = useContext(languageContext);
+
     return (
         <View style={styles.container}>
             <Text style={styles.titulo}>Settings Screen</Text>
@@ -11,12 +17,13 @@ const SettingsScreen = () => {
             <Text style={{ fontSize: 24, color: 'black', textAlign: 'center', marginTop: 10 }}>Idioma:</Text>
             <View style={styles.languageContainer}>
                 <View style={styles.languageContainer} >
-                    <Text style={styles.textoIdioma}>English</Text>
-                    <RadioButton value='es-ES' />
+                    <Text style={styles.textoIdioma}>Español</Text>
+                    <RadioButton value='es-ES' onPress={() => { changeLang('es-ES') }} status={idioma === 'es-ES' ? 'checked' : 'unchecked'} />
                 </View>
                 <View style={styles.languageContainer}>
-                    <Text style={styles.textoIdioma}>Español</Text>
-                    <RadioButton value='es-ES' />
+                    <Text style={styles.textoIdioma}>English</Text>
+                    <RadioButton value='en-EN' onPress={() => { changeLang('en-EN') }} status={idioma === 'en-EN' ? 'checked' : 'unchecked'} />
+
                 </View>
             </View>
         </View>

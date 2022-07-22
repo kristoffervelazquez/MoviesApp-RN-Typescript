@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, Text, ScrollView, Image, StyleSheet, Dimensions, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack'
 import { RootStackParams } from '../../navigation/Navigation';
@@ -7,6 +7,7 @@ import MovieDetails from '../../components/MovieDetails';
 import Icon from 'react-native-vector-icons/Ionicons'
 import HorizontalSlider from '../../components/HorizontalSlider';
 import MoviePoster from '../../components/MoviePoster';
+import { languageContext } from '../../context/LanguageContext';
 
 
 interface Props extends StackScreenProps<RootStackParams, 'DetailScreen'> { };
@@ -15,11 +16,13 @@ const screenHeight = Dimensions.get('window').height
 
 const DetailScreen = ({ route, navigation }: Props) => {
 
+    const { idioma } = useContext(languageContext)
+
     const movie = route.params
 
     const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
-    const { isLoading, cast, movieFullDetails, similar } = useMovieDetails({id: movie.id})
+    const { isLoading, cast, movieFullDetails, similar } = useMovieDetails({ id: movie.id, lenguaje: idioma })
 
 
 

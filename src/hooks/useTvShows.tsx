@@ -54,7 +54,7 @@ const useTvShows = (idioma: Lenguajes = 'en-EN') => {
 
     useEffect(() => {
         getTvShows();
-    }, [])
+    }, [idioma])
 
     return {
         ...tvShowsState

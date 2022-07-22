@@ -11,7 +11,7 @@ interface MoviesState {
     upcoming: Movie[],
 }
 
-export const useMovies = (idioma: Lenguajes = 'en-EN') => {
+export const useMovies = (idioma: Lenguajes) => {
 
     const [moviesState, setMoviesState] = useState<MoviesState>({
         nowPlaying: [],
@@ -47,7 +47,7 @@ export const useMovies = (idioma: Lenguajes = 'en-EN') => {
     useEffect(() => {
         //nowPlaying
         getMovies();
-    }, [])
+    }, [idioma])
 
 
     return {

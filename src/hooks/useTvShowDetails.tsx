@@ -18,10 +18,10 @@ interface TvShowDetailsState {
 
 interface Props {
     id: number,
-    idioma?: Lenguajes
+    idioma: Lenguajes
 }
 
-const useTvShowDetails = ({ id, idioma = 'en-EN' }: Props) => {
+const useTvShowDetails = ({ id, idioma }: Props) => {
 
 
     const [state, setState] = useState<TvShowDetailsState>({
@@ -48,7 +48,7 @@ const useTvShowDetails = ({ id, idioma = 'en-EN' }: Props) => {
 
     useEffect(() => {
         getDetails();
-    }, [])
+    }, [idioma])
 
 
 

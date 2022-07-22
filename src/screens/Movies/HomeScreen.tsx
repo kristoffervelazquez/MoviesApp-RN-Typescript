@@ -1,22 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, Text, ActivityIndicator, Dimensions, ScrollView } from 'react-native'
 import { useMovies } from '../../hooks/useMovies';
 import MoviePoster from '../../components/MoviePoster';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Carousel from 'react-native-reanimated-carousel';
 import HorizontalSlider from '../../components/HorizontalSlider';
+import { languageContext } from '../../context/LanguageContext';
 
 
 const { width: windowWidth } = Dimensions.get('window')
 
 const HomeScreen = () => {
 
+    const { idioma } = useContext(languageContext)
 
     const { top } = useSafeAreaInsets()
-    const { isLoading, nowPlaying, popular, topRated, upcoming } = useMovies()
-
-
-    // console.log(moviesCine[1]?.title);
+    const { isLoading, nowPlaying, popular, topRated, upcoming } = useMovies(idioma)
 
     if (isLoading) {
         return (
@@ -61,7 +60,7 @@ const HomeScreen = () => {
                             parallaxAdjacentItemScale: 0.75,
                         }}
 
-                        data={nowPlaying}
+                        data={popular}
                         renderItem={({ item }) => <MoviePoster movie={item} />}
                     />
                 </View>
