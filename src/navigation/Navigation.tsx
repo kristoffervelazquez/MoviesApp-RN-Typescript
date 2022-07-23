@@ -5,6 +5,7 @@ import { Movie } from '../interfaces/MoviesInterfaces/movieInterface';
 import BottomTabNavigation from './BottomTabNavigation';
 import { TvShow } from '../interfaces/TvShowsInterfaces/TvShowInterface';
 import TvDetailScreen from '../screens/TvShows/TvDetailScreen';
+import { useColorScheme } from 'react-native';
 
 export type RootStackParams = {
     HomeScreen: undefined;
@@ -13,15 +14,22 @@ export type RootStackParams = {
 }
 
 
+
+
 const Stack = createStackNavigator<RootStackParams>();
 
+
+
 export const Navigation = () => {
+    const theme = useColorScheme()
+
+
     return (
         <Stack.Navigator screenOptions={{
             headerShown: false,
-            // cardStyle: {
-            //     backgroundColor: 'white'
-            // }
+            cardStyle: {
+                backgroundColor: theme === 'dark' ? 'black' : 'white'
+            }
 
         }}>
             <Stack.Screen name="HomeScreen" component={BottomTabNavigation} />

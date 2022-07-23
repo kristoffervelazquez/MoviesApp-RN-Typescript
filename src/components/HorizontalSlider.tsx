@@ -20,7 +20,7 @@ const HorizontalSlider = ({ data, title, renderItem }: Props) => {
         <View style={{ height: (title ? 260 : 220) }}>
             {
                 title &&
-                <Text style={{ fontSize: 30, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{title}</Text>
+                <Text style={{ fontSize: 30, fontWeight: 'bold', marginLeft: 10 }}>{title}</Text>
             }
             <FlatList
                 data={data}

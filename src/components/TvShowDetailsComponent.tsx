@@ -20,10 +20,10 @@ const TvShowDetailsComponent = ({ cast, show }: Props) => {
         <>
             <View style={{ marginHorizontal: 20 }}>
                 <View style={{ flexDirection: 'row' }}>
-                    <Icon name='star-outline' size={16} style={{ marginRight: 4, color: 'black' }} />
-                    <Text style={{ color: 'black' }}>{show.vote_average} - </Text>
+                    <Icon name='star-outline' size={16} style={{ marginRight: 4, }} />
+                    <Text>{show.vote_average} - </Text>
 
-                    <Text style={{ fontSize: 12, marginTop: 1, color: 'black' }}>
+                    <Text style={{ fontSize: 12, marginTop: 1, }}>
                         {show.genres.map(g => g.name).join(', ')}
                     </Text>
 
@@ -32,13 +32,13 @@ const TvShowDetailsComponent = ({ cast, show }: Props) => {
                 {/* Historia */}
 
                 <View>
-                    <Text style={{ fontSize: 20, marginTop: 10, fontWeight: 'bold', color: 'black' }}>Historia</Text>
+                    <Text style={{ fontSize: 20, marginTop: 10, fontWeight: 'bold', }}>Historia</Text>
                     <Text style={{ fontSize: 16 }}>{show.overview}</Text>
                 </View>
 
             </View>
             <View style={{ marginBottom: 30, }}>
-                <Text style={{ marginLeft: 20, fontSize: 24, marginTop: 10, fontWeight: 'bold', color: 'black' }}>Actores</Text>
+                <Text style={{ marginLeft: 20, fontSize: 24, marginTop: 10, fontWeight: 'bold', }}>Actores</Text>
 
                 <FlatList
                     data={cast}

@@ -11,6 +11,7 @@ const BottomTabNavigation = () => {
     const BottomTab = createMaterialBottomTabNavigator();
 
     return (
+
         <BottomTab.Navigator barStyle={{ backgroundColor: '#170F5F' }}>
             <BottomTab.Screen name="MoviesNavigator" options={{ tabBarLabel: 'Movies', tabBarIcon: ({ color, focused }) => (<Icon name={(focused ? 'film' : 'film-outline')} color={color} size={20} />) }} component={HomeScreen} />
             <BottomTab.Screen name="ShowsNavigator" options={{ tabBarLabel: 'TV Shows', tabBarIcon: ({ color, focused }) => (<Icon name={(focused ? 'tv' : 'tv-outline')} color={color} size={20} />) }} component={TvHomeScreen} />

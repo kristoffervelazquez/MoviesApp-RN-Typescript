@@ -21,10 +21,10 @@ const MovieDetails = ({ cast, movie }: Props) => {
         <>
             <View style={{ marginHorizontal: 20 }}>
                 <View style={{ flexDirection: 'row' }}>
-                    <Icon name='star-outline' size={16} style={{ marginRight: 4, color: 'black' }} />
-                    <Text style={{ color: 'black' }}>{movie.vote_average} - </Text>
+                    <Icon name='star-outline' size={16} style={{ marginRight: 4 }} />
+                    <Text>{movie.vote_average} - </Text>
 
-                    <Text style={{ fontSize: 12, marginTop: 1, color: 'black' }}>
+                    <Text style={{ fontSize: 12, marginTop: 1 }}>
                         {movie.genres.map(g => g.name).join(', ')}
                     </Text>
 
@@ -33,17 +33,17 @@ const MovieDetails = ({ cast, movie }: Props) => {
                 {/* Historia */}
 
                 <View>
-                    <Text style={{ fontSize: 20, marginTop: 10, fontWeight: 'bold', color: 'black' }}>Historia</Text>
+                    <Text style={{ fontSize: 20, marginTop: 10, fontWeight: 'bold' }}>Historia</Text>
                     <Text style={{ fontSize: 16 }}>{movie.overview}</Text>
                 </View>
                 <View>
-                    <Text style={{ fontSize: 20, marginTop: 10, fontWeight: 'bold', color: 'black' }}>Presupuesto</Text>
+                    <Text style={{ fontSize: 20, marginTop: 10, fontWeight: 'bold' }}>Presupuesto</Text>
                     <Text style={{ fontSize: 16 }}>{new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'USD' }).format(movie.budget)}</Text>
                 </View>
 
             </View>
             <View style={{ marginBottom: 30 }}>
-                <Text style={{ marginLeft: 20, fontSize: 24, marginTop: 10, fontWeight: 'bold', color: 'black' }}>Actores</Text>
+                <Text style={{ marginLeft: 20, fontSize: 24, marginTop: 10, fontWeight: 'bold' }}>Actores</Text>
 
                 <FlatList
                     data={cast}
@@ -53,7 +53,7 @@ const MovieDetails = ({ cast, movie }: Props) => {
                     showsHorizontalScrollIndicator={false}
                     style={{ marginTop: 10, height: 70 }}
                 />
-                
+
             </View>
 
         </>
