@@ -20,7 +20,7 @@ const CastCardItem = ({ actor }: Props) => {
 
             <View style={styles.actorInfo}>
                 <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black' }}>{actor.name}</Text>
-                <Text style={{ fontSize: 10, fontWeight: 'bold', }}>{actor.character}</Text>
+                <Text style={{ fontSize: 10, fontWeight: 'bold', color: 'black' }}>{actor.character}</Text>
             </View>
         </View>
     )
