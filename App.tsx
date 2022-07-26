@@ -1,10 +1,9 @@
 import 'react-native-gesture-handler';
-import { StyleSheet } from 'react-native'
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { Navigation } from './src/navigation/Navigation';
 import LanguageContext from './src/context/LanguageContext';
-import { useState } from 'react';
+import { GradientProvider } from './src/context/GradientContext';
 
 
 
@@ -12,13 +11,24 @@ import { useState } from 'react';
 const App = () => {
     return (
         <NavigationContainer>
-            <LanguageContext>
+            <AppState>
                 <Navigation />
-            </LanguageContext>
+            </AppState>
         </NavigationContainer>
     )
 }
 
-export default App
 
-const styles = StyleSheet.create({})
+const AppState = ({ children }: any) => {
+    return (
+        <LanguageContext>
+            <GradientProvider>
+                {children}
+            </GradientProvider>
+        </LanguageContext>
+    )
+}
+
+
+
+export default App
